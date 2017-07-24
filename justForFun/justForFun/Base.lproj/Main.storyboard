@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gwg-RI-0AI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--All in one social Network-->
+        <scene sceneID="wRq-MU-GGP">
+            <objects>
+                <viewController id="d0T-Af-UGR" customClass="All_in_one_socialNetwork" customModule="justForFun" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cVL-NS-YxX"/>
+                        <viewControllerLayoutGuide type="bottom" id="SOR-tZ-wFu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zpL-N7-Vup">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="Aeg-WX-fbG">
+                                <rect key="frame" x="0.0" y="72" width="375" height="29"/>
+                                <segments>
+                                    <segment title="" image="Facebook"/>
+                                    <segment title="" image="LinkedIn"/>
+                                    <segment title="" image="Twitter"/>
+                                    <segment title="" image="Google Plus"/>
+                                    <segment title="" image="crayond"/>
+                                    <segment title="cash"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segAction:" destination="d0T-Af-UGR" eventType="valueChanged" id="htb-M9-CCO"/>
+                                </connections>
+                            </segmentedControl>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WnR-Je-GyJ">
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Znh-hg-gYj">
+                                <rect key="frame" x="169" y="369" width="37" height="37"/>
+                                <color key="color" red="0.2496568955" green="0.57854088120000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WnR-Je-GyJ" firstAttribute="leading" secondItem="Aeg-WX-fbG" secondAttribute="leading" id="38u-df-FJS"/>
+                            <constraint firstItem="Aeg-WX-fbG" firstAttribute="top" secondItem="cVL-NS-YxX" secondAttribute="bottom" constant="8" symbolic="YES" id="I5O-Qd-7N0"/>
+                            <constraint firstItem="Znh-hg-gYj" firstAttribute="centerX" secondItem="Aeg-WX-fbG" secondAttribute="centerX" id="J2l-9t-tp8"/>
+                            <constraint firstItem="WnR-Je-GyJ" firstAttribute="top" secondItem="Aeg-WX-fbG" secondAttribute="bottom" constant="8" symbolic="YES" id="Kzo-bw-YwG"/>
+                            <constraint firstItem="WnR-Je-GyJ" firstAttribute="bottom" secondItem="SOR-tZ-wFu" secondAttribute="top" id="MdW-FY-c6m"/>
+                            <constraint firstItem="Aeg-WX-fbG" firstAttribute="leading" secondItem="zpL-N7-Vup" secondAttribute="leading" id="PHb-ZY-Ka1"/>
+                            <constraint firstItem="WnR-Je-GyJ" firstAttribute="trailing" secondItem="Aeg-WX-fbG" secondAttribute="trailing" id="Vi4-y4-Nck"/>
+                            <constraint firstAttribute="trailing" secondItem="Aeg-WX-fbG" secondAttribute="trailing" id="ZIc-Zi-xHJ"/>
+                            <constraint firstItem="Znh-hg-gYj" firstAttribute="centerY" secondItem="WnR-Je-GyJ" secondAttribute="centerY" id="oH7-DF-Kkh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hFF-D0-Zam">
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="rewind" id="6l3-hq-ke5">
+                                <connections>
+                                    <action selector="backActionNav:" destination="d0T-Af-UGR" id="iAM-V5-yUo"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="ZVr-Ah-Dx4">
+                                <connections>
+                                    <action selector="clearNav:" destination="d0T-Af-UGR" id="Df0-JS-nYv"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="fastForward" id="sg9-4B-FOg">
+                                <connections>
+                                    <action selector="farwardActionNav:" destination="d0T-Af-UGR" id="ihc-ge-lYU"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="Ku2-JR-fUK">
+                                <connections>
+                                    <action selector="Reload:" destination="d0T-Af-UGR" id="MzY-Ah-Ax5"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="Activity" destination="Znh-hg-gYj" id="Tnf-XY-PDt"/>
+                        <outlet property="back" destination="6l3-hq-ke5" id="xFb-9L-607"/>
+                        <outlet property="farword" destination="sg9-4B-FOg" id="11M-1Q-QyI"/>
+                        <outlet property="segOut" destination="Aeg-WX-fbG" id="p2Z-Zt-fCd"/>
+                        <outlet property="webView" destination="WnR-Je-GyJ" id="d2Z-D7-kVf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U2V-nq-sQF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="912.79999999999995" y="88.605697151424295"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dzl-4I-fyK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gwg-RI-0AI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2PG-AQ-qGj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="d0T-Af-UGR" kind="relationship" relationship="rootViewController" id="IMM-KY-3tM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ZE-Ja-iy4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-26.399999999999999" y="88.605697151424295"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Facebook" width="22" height="22"/>
+        <image name="Google Plus" width="22" height="22"/>
+        <image name="LinkedIn" width="22" height="22"/>
+        <image name="Twitter" width="22" height="22"/>
+        <image name="crayond" width="22" height="22"/>
+    </resources>
+</document>
