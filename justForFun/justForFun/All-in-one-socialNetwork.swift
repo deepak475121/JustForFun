@@ -26,7 +26,6 @@ class All_in_one_socialNetwork: UIViewController,UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.delegate = self
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         self.navigationItem.title = "All-in-one"
         segOut.isEnabled = false
         let url = NSURL(string:"https://media.giphy.com/media/grNDsG4bMJRsI/giphy.gif")
@@ -34,14 +33,13 @@ class All_in_one_socialNetwork: UIViewController,UIWebViewDelegate {
         webView.loadRequest(req as URLRequest)
         self.authSetup()
         buttonCheck()
-        
+
+        //Motion activation
         if myMotionTest.isGyroAvailable {
-            // ...
-            print("Working")
             myMotionTest.startGyroUpdates()
         }
         
-        
+        //Motion activits
         if myMotionTest.isDeviceMotionAvailable {
             myMotionTest.deviceMotionUpdateInterval = 0.02
             myMotionTest.startDeviceMotionUpdates(to: .main) {
@@ -126,30 +124,25 @@ class All_in_one_socialNetwork: UIViewController,UIWebViewDelegate {
                         let url = NSURL(string:"https://media.giphy.com/media/grNDsG4bMJRsI/giphy.gif")
                         let req = NSURLRequest(url:url! as URL)
                         self?.webView.loadRequest(req as URLRequest)
-                        
                     }
                 }
-                
             }
         }
-        
     }
     
+    // LOADING ANIMI START
     func webViewDidStartLoad(_ webView: UIWebView) {
         buttonCheck()
         Activity.startAnimating()
     }
+    
+    // LOADING ANIMI STOP
     func webViewDidFinishLoad(_ webView: UIWebView) {
         buttonCheck()
         Activity.stopAnimating()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
+    // SEGMENT SET
     @IBAction func segAction(_ sender: Any) {
         buttonCheck()
         switch segOut.selectedSegmentIndex
@@ -192,11 +185,7 @@ class All_in_one_socialNetwork: UIViewController,UIWebViewDelegate {
 
     }
 
-
-
-    
-
-
+    // BACKWORD SET
     @IBAction func backActionNav(_ sender: Any) {
         buttonCheck()
         if(webView.canGoBack) {
@@ -206,9 +195,10 @@ class All_in_one_socialNetwork: UIViewController,UIWebViewDelegate {
             let alartAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alartController.addAction(alartAction)
             self.present(alartController, animated: true, completion: nil)
-            //            self.navigationController?.popViewController(animated:true)
         }
     }
+    
+    //FORWARD SET
     @IBAction func farwardActionNav(_ sender: Any) {
         buttonCheck()
         if(webView.canGoForward){
@@ -218,14 +208,15 @@ class All_in_one_socialNetwork: UIViewController,UIWebViewDelegate {
             let alartAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alartController.addAction(alartAction)
             self.present(alartController, animated: true, completion: nil)
-
         }
     }
     
+    //RELOAD ACTION
     @IBAction func Reload(_ sender: Any) {
         webView.reload()
     }
     
+    //CLEAR ALL ACTIVITY
     @IBAction func clearNav(_ sender: Any) {
         
         URLCache.shared.removeAllCachedResponses()
@@ -237,12 +228,10 @@ class All_in_one_socialNetwork: UIViewController,UIWebViewDelegate {
                 HTTPCookieStorage.shared.deleteCookie(cookie)
             }
         }
-        
         webView.reload()
     }
-  
-    
-    
+
+    //BIOMATRIC SETUP
     func authSetup() {
         
         let contact = LAContext()
@@ -260,13 +249,8 @@ class All_in_one_socialNetwork: UIViewController,UIWebViewDelegate {
                     print(error?.localizedDescription as Any)
                     OperationQueue.main.addOperation({ () -> Void in
                         self.showPass()})
-                    
-                    
                 }
-                
-                
             })
-            
         }else{
             print(error?.localizedDescription as Any)
             OperationQueue.main.addOperation({ () -> Void in
@@ -275,11 +259,11 @@ class All_in_one_socialNetwork: UIViewController,UIWebViewDelegate {
         }
     }
     
-    
+    //USER PASSWORD ENTRY FIELDS
     func showPass(){
         
         let alartController = UIAlertController(title: "User ID password", message: "Password : deepak", preferredStyle: .alert)
-        
+    
         let defaultAction = UIAlertAction(title: "OK", style: .cancel) { (action) -> Void in
             
             if let textField = (alartController.textFields?.first)! as UITextField?{
@@ -300,6 +284,7 @@ class All_in_one_socialNetwork: UIViewController,UIWebViewDelegate {
         self.present(alartController, animated: true, completion: nil)
     }
     
+    //ACTIVITY CHECK
     func buttonCheck(){
         if webView.canGoBack{
             back.isEnabled = true
